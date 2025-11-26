@@ -1,0 +1,60 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nuernberger\\source\\repos\\Taschenrechner WPF\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7EEB63F4-A421-4918-B7B2-2B62E6B96072}|Taschenrechner WPF\\Taschenrechner WPF.csproj|c:\\users\\nuernberger\\source\\repos\\taschenrechner wpf\\taschenrechner wpf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7EEB63F4-A421-4918-B7B2-2B62E6B96072}|Taschenrechner WPF\\Taschenrechner WPF.csproj|solutionrelative:taschenrechner wpf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EEB63F4-A421-4918-B7B2-2B62E6B96072}|Taschenrechner WPF\\Taschenrechner WPF.csproj|c:\\users\\nuernberger\\source\\repos\\taschenrechner wpf\\taschenrechner wpf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EEB63F4-A421-4918-B7B2-2B62E6B96072}|Taschenrechner WPF\\Taschenrechner WPF.csproj|solutionrelative:taschenrechner wpf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\nuernberger\\source\\repos\\Taschenrechner WPF\\Taschenrechner WPF\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Taschenrechner WPF\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\nuernberger\\source\\repos\\Taschenrechner WPF\\Taschenrechner WPF\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Taschenrechner WPF\\MainWindow.xaml.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAqwDgAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T14:14:26.328Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\nuernberger\\source\\repos\\Taschenrechner WPF\\Taschenrechner WPF\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Taschenrechner WPF\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\nuernberger\\source\\repos\\Taschenrechner WPF\\Taschenrechner WPF\\MainWindow.xaml",
+              "RelativeToolTip": "Taschenrechner WPF\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-25T14:14:26.506Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

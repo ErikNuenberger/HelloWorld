@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Taschenrechner WPF/1.0.0": {
+        "dependencies": {
+          "HelloWorld": "1.0.0"
+        },
+        "runtime": {
+          "Taschenrechner WPF.dll": {}
+        }
+      },
+      "HelloWorld/1.0.0": {
+        "runtime": {
+          "HelloWorld.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Taschenrechner WPF/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HelloWorld/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
