@@ -1,5 +1,9 @@
 # this is the Documentation about the whole calculator project done in CSharp and WPF
 
-- note, the Documentation is split into two parts, one called 'Calculator' for the backend code in c# that explains how the calculator functions...
-- and another one, called WPF where the GUI system for the calculator is explained
-- both directories contain their own programs but the final version of the Calculator is contained in WPF
+This documentation provides a comprehensive overview of the entire calculator project, implemented in C# with WPF.
+
+The documentation is divided into two main sections:
+1. Calculator – This section covers the backend code in C# and explains how the calculator functions.
+2. WPF – This section details the graphical user interface (GUI) system of the calculator.
+
+Both sections contain their own programs; however, the final version of the calculator is contained in the WPF part.
