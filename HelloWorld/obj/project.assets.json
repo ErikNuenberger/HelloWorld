@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\HelloWorld.csproj",
-      "projectName": "HelloWorld",
-      "projectPath": "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\HelloWorld.csproj",
+      "projectUniqueName": "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\Calculator.csproj",
+      "projectName": "Calculator",
+      "projectPath": "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\Calculator.csproj",
       "packagesPath": "C:\\Users\\nuernberger\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\obj\\",
       "projectStyle": "PackageReference",

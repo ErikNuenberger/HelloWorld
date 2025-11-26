@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\HelloWorld\HelloWorld.csproj" />
+    <ProjectReference Include="..\..\HelloWorld\Calculator.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -2,28 +2,28 @@
   "version": 3,
   "targets": {
     "net8.0-windows7.0": {
-      "HelloWorld/1.0.0": {
+      "Calculator/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "compile": {
-          "bin/placeholder/HelloWorld.dll": {}
+          "bin/placeholder/Calculator.dll": {}
         },
         "runtime": {
-          "bin/placeholder/HelloWorld.dll": {}
+          "bin/placeholder/Calculator.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "HelloWorld/1.0.0": {
+    "Calculator/1.0.0": {
       "type": "project",
-      "path": "../../HelloWorld/HelloWorld.csproj",
-      "msbuildProject": "../../HelloWorld/HelloWorld.csproj"
+      "path": "../../HelloWorld/Calculator.csproj",
+      "msbuildProject": "../../HelloWorld/Calculator.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
-      "HelloWorld >= 1.0.0"
+      "Calculator >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -33,9 +33,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nuernberger\\source\\repos\\Taschenrechner WPF\\Taschenrechner WPF\\Taschenrechner WPF.csproj",
-      "projectName": "Taschenrechner WPF",
-      "projectPath": "C:\\Users\\nuernberger\\source\\repos\\Taschenrechner WPF\\Taschenrechner WPF\\Taschenrechner WPF.csproj",
+      "projectUniqueName": "C:\\Users\\nuernberger\\source\\repos\\Taschenrechner WPF\\Taschenrechner WPF\\WPF.csproj",
+      "projectName": "WPF",
+      "projectPath": "C:\\Users\\nuernberger\\source\\repos\\Taschenrechner WPF\\Taschenrechner WPF\\WPF.csproj",
       "packagesPath": "C:\\Users\\nuernberger\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\nuernberger\\source\\repos\\Taschenrechner WPF\\Taschenrechner WPF\\obj\\",
       "projectStyle": "PackageReference",
@@ -58,8 +58,8 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\HelloWorld.csproj": {
-              "projectPath": "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\HelloWorld.csproj"
+            "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\Calculator.csproj": {
+              "projectPath": "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\Calculator.csproj"
             }
           }
         }

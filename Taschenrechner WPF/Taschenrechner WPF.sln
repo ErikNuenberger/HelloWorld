@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taschenrechner WPF", "Taschenrechner WPF\Taschenrechner WPF.csproj", "{7EEB63F4-A421-4918-B7B2-2B62E6B96072}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF", "Taschenrechner WPF\WPF.csproj", "{7EEB63F4-A421-4918-B7B2-2B62E6B96072}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "..\HelloWorld\HelloWorld.csproj", "{F2523BCE-7C5D-4236-881D-85C58B2679BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator", "..\HelloWorld\Calculator.csproj", "{F2523BCE-7C5D-4236-881D-85C58B2679BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5A8808FB-ACF3-4145-B8A9-9786C2D1109B}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

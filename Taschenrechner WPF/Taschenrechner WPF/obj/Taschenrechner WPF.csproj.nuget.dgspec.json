@@ -4,12 +4,12 @@
     "C:\\Users\\nuernberger\\source\\repos\\Taschenrechner WPF\\Taschenrechner WPF\\Taschenrechner WPF.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\HelloWorld.csproj": {
+    "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\Calculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\HelloWorld.csproj",
-        "projectName": "HelloWorld",
-        "projectPath": "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\HelloWorld.csproj",
+        "projectUniqueName": "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\Calculator.csproj",
+        "projectName": "Calculator",
+        "projectPath": "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\Calculator.csproj",
         "packagesPath": "C:\\Users\\nuernberger\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\obj\\",
         "projectStyle": "PackageReference",
@@ -96,8 +96,8 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\HelloWorld.csproj": {
-                "projectPath": "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\HelloWorld.csproj"
+              "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\Calculator.csproj": {
+                "projectPath": "C:\\Users\\nuernberger\\source\\repos\\HelloWorld\\Calculator.csproj"
               }
             }
           }
