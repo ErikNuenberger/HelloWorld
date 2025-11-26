@@ -1,4 +1,4 @@
-# this is the Documentation about the whole calculator project done in CSharp and WPF
+# this is the documentation for the entire calculator project done in CSharp and WPF
 
 This documentation provides a comprehensive overview of the entire calculator project, implemented in C# with WPF.
 
