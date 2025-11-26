@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Taschenrechner_WPF"
         mc:Ignorable="d"
         Title="Taschenrechner" Height="450" Width="800">
-     <Grid Margin="10">
+	
+	
+    <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="1*" />
@@ -30,7 +32,7 @@
             <TextBox Grid.Row="1" Name="InputBox" Height="35" FontSize="18" />
 
             <!-- Button Grid -->
-            <Grid Grid.Row="2" Margin="0,10,0,0">
+            <Grid Grid.Row="2" Margin="0, 10, 0, 0">
                 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -50,40 +52,41 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Row 1 -->
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="0" Grid.Column="0" Content="7"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="0" Grid.Column="1" Content="8"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="0" Grid.Column="2" Content="9"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="0" Grid.Column="3" Content="+"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="0" Grid.Column="4" Content="PI"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="0" Grid.Column="5" Content="sin("/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="0" Grid.Column="6" Content="fac("/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="0" Grid.Column="0" Content="7"/>
+                <Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="0" Grid.Column="1" Content="8"/>
+                <Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="0" Grid.Column="2" Content="9"/>
+                <Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="0" Grid.Column="3" Content="+"/>
+                <Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="0" Grid.Column="4" Content="PI"/>
+                <Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="0" Grid.Column="5" Content="sin("/>
+                <Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="0" Grid.Column="6" Content="fac("/>
 
                 <!-- Row 2 -->
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="1" Grid.Column="0" Content="4"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="1" Grid.Column="1" Content="5"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="1" Grid.Column="2" Content="6"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="1" Grid.Column="3" Content="-"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="1" Grid.Column="4" Content="e"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="1" Grid.Column="5" Content="cos("/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="1" Grid.Column="6" Content="sqrt("/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="1" Grid.Column="0" Content="4"/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="1" Grid.Column="1" Content="5"/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="1" Grid.Column="2" Content="6"/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="1" Grid.Column="3" Content="-"/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="1" Grid.Column="4" Content="e"/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="1" Grid.Column="5" Content="cos("/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="1" Grid.Column="6" Content="sqrt("/>
+                
+				<!-- Row 3 -->
+                <Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="2" Grid.Column="0" Content="1"/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="2" Grid.Column="1" Content="2"/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="2" Grid.Column="2" Content="3"/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="2" Grid.Column="3" Content="*"/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="2" Grid.Column="4" Content="("/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="2" Grid.Column="5" Content="tan("/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="2" Grid.Column="6" Content="pow("/>
 
-                <!-- Row 3 -->
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="2" Grid.Column="0" Content="1"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="2" Grid.Column="1" Content="2"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="2" Grid.Column="2" Content="3"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="2" Grid.Column="3" Content="*"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="2" Grid.Column="4" Content="("/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="2" Grid.Column="5" Content="tan("/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="2" Grid.Column="6" Content="pow("/>
-
-                <!-- Row 4 -->
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="3" Grid.Column="0" Content="0"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="3" Grid.Column="1" Content=","/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="3" Grid.Column="2" Content=";"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="3" Grid.Column="3" Content="/"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="3" Grid.Column="4" Content=")"/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="3" Grid.Column="5" Content="cot("/>
-                <Button Click="Button_Number_Click" FontSize="20" Grid.Row="3" Grid.Column="6" Content="C"/>
+				<!-- Row 4 -->
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="3" Grid.Column="0" Content="0"/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="3" Grid.Column="1" Content=","/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="3" Grid.Column="2" Content=";"/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="3" Grid.Column="3" Content="/"/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="3" Grid.Column="4" Content=")"/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="3" Grid.Column="5" Content="cot("/>
+				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="3" Grid.Column="6" Content="C"/>
+				
             </Grid>
 
             <!-- Toggle row -->
@@ -101,7 +104,7 @@
         <StackPanel Grid.Column="1" Margin="10,0,0,0">
             <TextBlock FontSize="20" Text="Ergebnis:" FontWeight="Bold" Margin="0,0,0,5"/>
             <Label Name="OutputLabel" Height="35" FontSize="22" Background="#EEE" Foreground="Black" Padding="5"/>
-            <Button Click="Button_Number_Click" FontSize="20" Content="=" Height="40" Margin="0,10,0,0"/>
+            <Button Click="Button_Number_Click" FontSize="20" FontWeight="Bold" Content="=" Height="40" Margin="0,10,0,0"/>
         </StackPanel>
 
     </Grid>
