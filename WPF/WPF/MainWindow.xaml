@@ -5,13 +5,107 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Taschenrechner_WPF"
         mc:Ignorable="d"
-        Title="Taschenrechner" Height="450" Width="800">
-	
-	
-    <Grid Margin="10">
+        Title="Taschenrechner"
+		Height="450"
+		Width="950"
+		Background="#1D2129"
+		FontFamily="Helvetica Neue"
+		Icon="C:\Users\nuernberger\source\repos\Bild1.png">
+	<!-- BorderBrush="#5B677F" Background="#2E3440" Foreground="#FFFFFF" BorderBrush="#5B677F" Padding="20" -->
+	<Window.Resources>
+		<Style TargetType="Button">
+			<Setter Property="Background" Value="#424B5C"/>
+			<Setter Property="BorderBrush" Value="#424B5C"/>
+			<Setter Property="Foreground" Value="#FFFFFF"/>
+			<Setter Property="Padding" Value="6"/>
+			<Setter Property="Margin" Value="6"/>
+			
+			<Setter Property="FontSize" Value="22"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Border x:Name="border"
+								Background="{TemplateBinding Background}"
+								BorderBrush="{TemplateBinding BorderBrush}"
+								BorderThickness="{TemplateBinding BorderThickness}"
+								CornerRadius="8">
+							<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="{TemplateBinding Padding}"/>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter TargetName="border" Property="Background" Value="#5B677F"/>
+								<Setter TargetName="border" Property="BorderBrush" Value="#5B677F"/>
+								<Setter Property="Margin" Value="1"/>
+								<Setter  Property="Padding" Value="9"/>
+							</Trigger>
+						<EventTrigger RoutedEvent="Button.Click">
+								<BeginStoryboard>
+									<Storyboard>
+										<ColorAnimation
+											Storyboard.TargetName="border"
+											Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+											To="#E6968E"
+											Duration="0:0:0.10"
+											AutoReverse="True"/>
+									</Storyboard>
+								</BeginStoryboard>
+							</EventTrigger>
+                </ControlTemplate.Triggers>
+						
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style TargetType="ToggleButton">
+			<!-- Standard -->
+			<Setter Property="Background" Value="#C0392B"/>
+			<Setter Property="BorderBrush" Value="#C0392B"/>
+			<Setter Property="Foreground" Value="#FFFFFF"/>
+			<Setter Property="Padding" Value="5"/>
+
+			<Setter Property="FontSize" Value="22"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="ToggleButton">
+						<Border x:Name="border"
+								Background="{TemplateBinding Background}"
+								BorderBrush="{TemplateBinding BorderBrush}"
+								BorderThickness="{TemplateBinding BorderThickness}"
+								CornerRadius="8">
+							<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter TargetName="border" Property="Background" Value="#DB675B"/>
+								<Setter TargetName="border" Property="BorderBrush" Value="#DB675B"/>
+							</Trigger>
+
+							<EventTrigger RoutedEvent="Button.Click">
+								<BeginStoryboard>
+									<Storyboard>
+										<ColorAnimation
+											Storyboard.TargetName="border"
+											Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+											To="#E6968E"
+											Duration="0:0:0.10"
+											AutoReverse="True"/>
+									</Storyboard>
+								</BeginStoryboard>
+							</EventTrigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Resources>
+
+
+
+	<Grid Background="#1D2129" Margin="20">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
 
         <!-- Left side (Input + Buttons) -->
@@ -26,10 +120,10 @@
             </Grid.RowDefinitions>
 
             <!-- INPUT label -->
-            <TextBlock FontSize="20" Text="Eingabe" FontWeight="Bold" Margin="0,0,0,5"/>
+            <TextBlock Background="#1D2129" Foreground="#FFFFFF" FontSize="25" Text="Eingabe" FontWeight="Bold" Margin="0,0,0,5"/>
 
             <!-- Input TextBox -->
-            <TextBox Grid.Row="1" Name="InputBox" Height="35" FontSize="18" />
+            <TextBox Background="#5B677F" Padding="5" Foreground="#FFFFFF" BorderBrush="#5B677F" Grid.Row="1" Name="InputBox" Height="42" FontSize="26" KeyDown="InputBox_KeyDown"/>
 
             <!-- Button Grid -->
             <Grid Grid.Row="2" Margin="0, 10, 0, 0">
@@ -52,60 +146,70 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Row 1 -->
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="0" Grid.Column="0" Content="7"/>
-                <Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="0" Grid.Column="1" Content="8"/>
-                <Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="0" Grid.Column="2" Content="9"/>
-                <Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="0" Grid.Column="3" Content="+"/>
-                <Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="0" Grid.Column="4" Content="PI"/>
-                <Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="0" Grid.Column="5" Content="sin("/>
-                <Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="0" Grid.Column="6" Content="fac("/>
+				<Button Click="Button_Number_Click" Grid.Row="0" Grid.Column="0" Content="7"/>
+                <Button Click="Button_Number_Click" Grid.Row="0" Grid.Column="1" Content="8"/>
+                <Button Click="Button_Number_Click" Grid.Row="0" Grid.Column="2" Content="9"/>
+                <Button Click="Button_Number_Click" Grid.Row="0" Grid.Column="3" Content="+"/>
+                <Button Click="Button_Number_Click" Grid.Row="0" Grid.Column="4" Content="PI"/>
+                <Button Click="Button_Number_Click" Grid.Row="0" Grid.Column="5" Content="sin("/>
+                <Button Click="Button_Number_Click" Grid.Row="0" Grid.Column="6" Content="fac("/>
 
                 <!-- Row 2 -->
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="1" Grid.Column="0" Content="4"/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="1" Grid.Column="1" Content="5"/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="1" Grid.Column="2" Content="6"/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="1" Grid.Column="3" Content="-"/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="1" Grid.Column="4" Content="e"/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="1" Grid.Column="5" Content="cos("/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="1" Grid.Column="6" Content="sqrt("/>
+				<Button Click="Button_Number_Click" Grid.Row="1" Grid.Column="0" Content="4"/>
+				<Button Click="Button_Number_Click" Grid.Row="1" Grid.Column="1" Content="5"/>
+				<Button Click="Button_Number_Click" Grid.Row="1" Grid.Column="2" Content="6"/>
+				<Button Click="Button_Number_Click" Grid.Row="1" Grid.Column="3" Content="-"/>
+				<Button Click="Button_Number_Click" Grid.Row="1" Grid.Column="4" Content="e"/>
+				<Button Click="Button_Number_Click" Grid.Row="1" Grid.Column="5" Content="cos("/>
+				<Button Click="Button_Number_Click" Grid.Row="1" Grid.Column="6" Content="sqrt("/>
                 
 				<!-- Row 3 -->
-                <Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="2" Grid.Column="0" Content="1"/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="2" Grid.Column="1" Content="2"/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="2" Grid.Column="2" Content="3"/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="2" Grid.Column="3" Content="*"/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="2" Grid.Column="4" Content="("/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="2" Grid.Column="5" Content="tan("/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="2" Grid.Column="6" Content="pow("/>
+                <Button Click="Button_Number_Click" Grid.Row="2" Grid.Column="0" Content="1"/>
+				<Button Click="Button_Number_Click" Grid.Row="2" Grid.Column="1" Content="2"/>
+				<Button Click="Button_Number_Click" Grid.Row="2" Grid.Column="2" Content="3"/>
+				<Button Click="Button_Number_Click" Grid.Row="2" Grid.Column="3" Content="*"/>
+				<Button Click="Button_Number_Click" Grid.Row="2" Grid.Column="4" Content="("/>
+				<Button Click="Button_Number_Click" Grid.Row="2" Grid.Column="5" Content="tan("/>
+				<Button Click="Button_Number_Click" Grid.Row="2" Grid.Column="6" Content="pow("/>
 
 				<!-- Row 4 -->
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="3" Grid.Column="0" Content="0"/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="3" Grid.Column="1" Content=","/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="3" Grid.Column="2" Content=";"/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="3" Grid.Column="3" Content="/"/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="3" Grid.Column="4" Content=")"/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="3" Grid.Column="5" Content="cot("/>
-				<Button Click="Button_Number_Click" Background="#001F1a" Foreground="#FFFFFF" Padding="10" FontSize="20" Grid.Row="3" Grid.Column="6" Content="C"/>
+				<Button Click="Button_Number_Click" Grid.Row="3" Grid.Column="0" Content="0"/>
+				<Button Click="Button_Number_Click" Grid.Row="3" Grid.Column="1" Content=","/>
+				<Button Click="Button_Number_Click" Grid.Row="3" Grid.Column="2" Content=";"/>
+				<Button Click="Button_Number_Click" Grid.Row="3" Grid.Column="3" Content="/"/>
+				<Button Click="Button_Number_Click" Grid.Row="3" Grid.Column="4" Content=")"/>
+				<Button Click="Button_Number_Click" Grid.Row="3" Grid.Column="5" Content="cot("/>
+				<Button Click="Button_Number_Click" Grid.Row="3" Grid.Column="6" Content="C"/>
 				
             </Grid>
 
             <!-- Toggle row -->
             <StackPanel Grid.Row="3" Margin="0,10,0,0" Orientation="Horizontal">
-                <TextBlock FontSize="20" Text="Modus:" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                <ToggleButton x:Name="AngleToggle" Checked="AngleToggle_Checked" Unchecked="AngleToggle_Unchecked" Content="RAD / DEG" Width="100" Height="30"/>
+				<ToggleButton x:Name="AngleToggle" Content="RAD" Checked="AngleToggle_Checked" Unchecked="AngleToggle_Unchecked" Width="100" Height="45">
+				</ToggleButton>
             </StackPanel>
-
-           
-
-            
         </Grid>
 
         <!-- Right side (Output) -->
         <StackPanel Grid.Column="1" Margin="10,0,0,0">
-            <TextBlock FontSize="20" Text="Ergebnis:" FontWeight="Bold" Margin="0,0,0,5"/>
-            <Label Name="OutputLabel" Height="35" FontSize="22" Background="#EEE" Foreground="Black" Padding="5"/>
-            <Button Click="Button_Number_Click" FontSize="20" FontWeight="Bold" Content="=" Height="40" Margin="0,10,0,0"/>
+            <TextBlock Foreground="#FFFFFF" FontSize="25" Text="Ergebnis:" FontWeight="Bold" Margin="0,0,0,5"/>
+			<TextBox Name="OutputLabel" BorderBrush="#5B677F" Height="42" FontSize="26" Background="#5B677F" Foreground="#FFFFFF" Padding="5"/>
+			<Label x:Name="ErrorLabel"
+			   Background="#5B677F"
+			   Foreground="#FFFFFF"
+			   FontSize="16"
+			   Padding="5"
+			   Margin="0,0,0,0"
+			   Height="64"
+			   HorizontalContentAlignment="Left"
+			   VerticalContentAlignment="Top"
+			Visibility="Collapsed">
+				<TextBlock x:Name="ErrorText" TextWrapping="Wrap"/>
+			</Label>
+            <Button Click="Button_Number_Click" FontSize="24" FontWeight="Bold" Content="=" Height="45" Margin="0,15,0,0"/>
+			
         </StackPanel>
+	
 
     </Grid>
 </Window>

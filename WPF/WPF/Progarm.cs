@@ -459,6 +459,10 @@ namespace Taschenrechner_WPF
                         {
                             throw new Exception("tan() erwartet 1 Argument");
                         }
+                        if (args[0] == 90)
+                        {
+                            throw new Exception("tan(90) in deg ist undefiniert");
+                        }
                         return Math.Tan(args[0] * Math.PI / 180);
 
                     case "cot":
@@ -528,6 +532,10 @@ namespace Taschenrechner_WPF
         {
             bool r = rad;
             input = input.Replace(',', '.');
+            if(input == "")
+            {
+                return "";
+            }
             try
             {
                 Lexer lexer = new Lexer(input);
@@ -538,7 +546,7 @@ namespace Taschenrechner_WPF
             }
             catch(Exception e)
             {
-                return e.Message.ToString();
+                return "Fehlerhafte Eingabe\n" + e.Message.ToString();
             }
 
         }
