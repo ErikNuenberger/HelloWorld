@@ -30,16 +30,16 @@ namespace Taschenrechner_WPF
             {
                 string val = InputBox.Text;
                 string output = Program.Calculate(val, rad);
-                if(output.Contains("Fehlerhafte Eingabe"))
+                if (output.Contains("Fehlerhafte Eingabe"))
                 {
                     OutputLabel.Text = "Fehlerhafte Eingabe";
                     string errorMsg = output.Substring(20);
                     int index = 0;
                     if (errorMsg.Length > 40)
                     {
-                        for(int i = errorMsg.Length - 1; i > 40; i--)
+                        for (int i = errorMsg.Length - 1; i > 40; i--)
                         {
-                            if(errorMsg[i] == ' ')
+                            if (errorMsg[i] == ' ')
                             {
                                 index = i;
                                 break;
@@ -62,7 +62,7 @@ namespace Taschenrechner_WPF
                 }
 
             }
-            else if(btn.Content.ToString() == "C")
+            else if (btn.Content.ToString() == "C")
             {
                 ErrorLabel.Visibility = Visibility.Collapsed;
                 InputBox.Text = "";
@@ -79,7 +79,7 @@ namespace Taschenrechner_WPF
 
         private void InputBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 string val = InputBox.Text;
                 string output = Program.Calculate(val, rad);
@@ -88,18 +88,18 @@ namespace Taschenrechner_WPF
                     OutputLabel.Text = "Fehlerhafte Eingabe";
                     string errorMsg = output.Substring(20);
                     int index = 0;
-                    if(errorMsg.Length > 40)
+                    if (errorMsg.Length > 40)
                     {
-                        for(int i = errorMsg.Length - 1; i > 40 ; i--)
+                        for (int i = errorMsg.Length - 1; i > 40; i--)
                         {
-                            if(errorMsg[i] == ' ')
+                            if (errorMsg[i] == ' ')
                             {
                                 index = i;
                                 break;
                             }
                         }
                     }
-                    if(index > 0)
+                    if (index > 0)
                     {
                         errorMsg = errorMsg.Insert(index, "\n");
                     }
