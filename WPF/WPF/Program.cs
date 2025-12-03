@@ -236,7 +236,7 @@ namespace Taschenrechner_WPF
 
             if (Current.Type != TokenType.EndOfInput)
             {
-                throw new Exception($"Unerwartetes Token: {Current}");
+                throw new Exception($"Unerwartetes Token: {Current.Value}");
             }
             return value;
         }
@@ -366,7 +366,7 @@ namespace Taschenrechner_WPF
                 }
                 return inner;
             }
-            throw new Exception($"Unerwartetes Token in Factor: {Current}");
+            throw new Exception($"Unerwartetes Token in Faktor");
         }
 
 

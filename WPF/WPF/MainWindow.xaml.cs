@@ -20,104 +20,187 @@ namespace Taschenrechner_WPF
         public MainWindow()
         {
             InitializeComponent();
+            MainUI.Visibility = Visibility.Visible;
+            KidsUI.Visibility = Visibility.Collapsed;
+            HistoryLabel.Visibility = Visibility.Collapsed;
+            NextButton.IsEnabled = false;
+            
         }
         bool rad = true;
+        bool kidsmode = false;
+        string[] HistoryRes = new string[4];
+        string[] HistoryCal = new string[4];
+        int HistPos = 0;
+        int ShowPos = 0;
+        bool next = false;
 
         private void Button_Number_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = sender as Button;
-            if (btn.Content.ToString() == "=")
+            if(!kidsmode)
             {
-                string val = InputBox.Text;
-                string output = Program.Calculate(val, rad);
-                if (output.Contains("Fehlerhafte Eingabe"))
+                Button btn = sender as Button;
+                if(btn.Content.ToString() == "=")
                 {
-                    OutputLabel.Text = "Fehlerhafte Eingabe";
-                    string errorMsg = output.Substring(20);
-                    int index = 0;
-                    if (errorMsg.Length > 40)
+                    string val = InputBox.Text;
+                    HistoryLabel.Visibility = Visibility.Visible;
+                    if (HistPos >= 4)
                     {
-                        for (int i = errorMsg.Length - 1; i > 40; i--)
+                        HistPos = 0;
+                    }
+                    HistoryCal[HistPos] = val;
+                    string output = Program.Calculate(val, rad);
+                    if(output.Contains("Fehlerhafte Eingabe"))
+                    {
+                        OutputLabel.Text = "Fehlerhafte Eingabe";
+                        string errorMsg = output.Substring(20);
+                        int index = 0;
+                        HistoryRes[HistPos] = "Fehler";
+                        if (errorMsg.Length > 40)
                         {
-                            if (errorMsg[i] == ' ')
+                            for(int i = errorMsg.Length - 1; i > 40; i--)
                             {
-                                index = i;
-                                break;
+                                if(errorMsg[i] == ' ')
+                                {
+                                    index = i;
+                                    break;
+                                }
                             }
                         }
-                    }
-                    if (index > 0)
-                    {
-                        errorMsg = errorMsg.Insert(index, "\n");
-                    }
+                        if(index > 0)
+                        {
+                            errorMsg = errorMsg.Insert(index, "\n");
+                        }
 
-                    ErrorText.Text = errorMsg;
-                    ErrorLabel.Visibility = Visibility.Visible;
+                        ErrorText.Text = errorMsg;
+                        ErrorLabel.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        OutputLabel.Text = output;
+                        HistoryRes[HistPos] = output;
+                        ErrorLabel.Visibility = Visibility.Collapsed;
+                        ErrorText.Text = "";
+                    }
+                    HistPos++;
+                    if(ShowPos < 4)
+                    {
+                        ShowPos++;
+                    }
+                    string histstr = "";
+                    for(int i = 0; i < ShowPos; i++)
+                    {
+                        histstr = histstr + HistoryCal[i] + " =\n" + HistoryRes[i] + "\n\n";
+                    }
+                    HistoryLabel.Content = histstr;
+                    HistoryLabel.Height = 60 * ShowPos + 10;
+                    histstr = "";
+
+                }
+                else if (btn.Content.ToString() == "C")
+                {
+                    ErrorLabel.Visibility = Visibility.Collapsed;
+                    InputBox.Text = "";
+                    OutputLabel.Text = "";
+                    ErrorText.Text = "";
                 }
                 else
                 {
-                    OutputLabel.Text = output;
-                    ErrorLabel.Visibility = Visibility.Collapsed;
-                    ErrorText.Text = "";
+                    string value = InputBox.Text;
+                    value = value + btn.Content.ToString();
+                    InputBox.Text = value;
                 }
-
-            }
-            else if (btn.Content.ToString() == "C")
-            {
-                ErrorLabel.Visibility = Visibility.Collapsed;
-                InputBox.Text = "";
-                OutputLabel.Text = "";
-                ErrorText.Text = "";
-            }
-            else
-            {
-                string value = InputBox.Text;
-                value = value + btn.Content.ToString();
-                InputBox.Text = value;
             }
         }
 
         private void InputBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            if(!kidsmode)
             {
-                string val = InputBox.Text;
-                string output = Program.Calculate(val, rad);
-                if (output.Contains("Fehlerhafte Eingabe"))
+                if(e.Key == Key.Enter)
                 {
-                    OutputLabel.Text = "Fehlerhafte Eingabe";
-                    string errorMsg = output.Substring(20);
-                    int index = 0;
-                    if (errorMsg.Length > 40)
+                    string val = InputBox.Text;
+                    HistoryLabel.Visibility = Visibility.Visible;
+                    if (HistPos >= 4)
                     {
-                        for (int i = errorMsg.Length - 1; i > 40; i--)
+                        HistPos = 0;
+                    }
+                    HistoryCal[HistPos] = val;
+                    string output = Program.Calculate(val, rad);
+                    if (output.Contains("Fehlerhafte Eingabe"))
+                    {
+                        OutputLabel.Text = "Fehlerhafte Eingabe";
+                        string errorMsg = output.Substring(20);
+                        HistoryRes[HistPos] = "Fehler";
+                        int index = 0;
+                        if (errorMsg.Length > 40)
                         {
-                            if (errorMsg[i] == ' ')
+                            for (int i = errorMsg.Length - 1; i > 40; i--)
                             {
-                                index = i;
-                                break;
+                                if (errorMsg[i] == ' ')
+                                {
+                                    index = i;
+                                    break;
+                                }
                             }
                         }
-                    }
-                    if (index > 0)
-                    {
-                        errorMsg = errorMsg.Insert(index, "\n");
-                    }
+                        if (index > 0)
+                        {
+                            errorMsg = errorMsg.Insert(index, "\n");
+                        }
 
-                    ErrorText.Text = errorMsg;
-                    ErrorLabel.Visibility = Visibility.Visible;
+                        ErrorText.Text = errorMsg;
+                        ErrorLabel.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        OutputLabel.Text = output;
+                        HistoryRes[HistPos] = output;
+                        ErrorLabel.Visibility = Visibility.Collapsed;
+                        ErrorText.Text = "";
+                    }
+                    HistPos++;
+                    if(ShowPos < 4)
+                    {
+                        ShowPos++;
+                    }
+                    string histstr = "";
+                    for (int i = 0; i < ShowPos; i++)
+                    {
+                        histstr = histstr + HistoryCal[i] + " =\n" + HistoryRes[i] + "\n\n";
+                    }
+                    HistoryLabel.Content = histstr;
+                    HistoryLabel.Height = 60 * ShowPos + 10;
+                    histstr = "";
+                }
+            }
+            else
+            {
+                if (int.TryParse(AnswerBox.Text, out int userAnswer))
+                {
+                    if (userAnswer == currentAnswer)
+                    {
+                        FeedbackText.Text = "🎉 Glückwunsch!";
+                        FeedbackText.Foreground = new SolidColorBrush(Color.FromRgb(0, 180, 0));
+                        next = true;
+                        NextButton.IsEnabled = true;
+                    }
+                    else
+                    {
+                        FeedbackText.Text = "❌ Versuch es nochmal!";
+                        FeedbackText.Foreground = new SolidColorBrush(Color.FromRgb(192, 57, 43));
+                    }
                 }
                 else
                 {
-                    OutputLabel.Text = output;
-                    ErrorLabel.Visibility = Visibility.Collapsed;
-                    ErrorText.Text = "";
+                    FeedbackText.Text = "Bitte eine Zahl eingeben!";
+                    FeedbackText.Foreground = new SolidColorBrush(Color.FromRgb(192, 57, 43));
+                    NextButton.IsEnabled = false;
                 }
             }
         }
 
 
-        private void AngleToggle_Checked(object sender, RoutedEventArgs e)
+            private void AngleToggle_Checked(object sender, RoutedEventArgs e)
         {
             rad = false;
             AngleToggle.Content = "DEG";
@@ -129,5 +212,125 @@ namespace Taschenrechner_WPF
             AngleToggle.Content = "RAD";
         }
 
+        private void KidsModeToggle_Unchecked(Object sender, RoutedEventArgs e)
+        {
+            KidsModeToggle.Content = "Kindermodus";
+            kidsmode = false;
+            MainUI.Visibility = Visibility.Visible;
+            KidsUI.Visibility = Visibility.Collapsed;
+        }
+
+        private void KidsModeToggle_Checked(Object sender, RoutedEventArgs e)
+        {
+            KidsModeToggle.Content = "normaler Modus";
+            kidsmode = true;
+            MainUI.Visibility = Visibility.Collapsed;
+            KidsUI.Visibility = Visibility.Visible;
+            GenerateTask();
+        }
+
+        Random rnd = new Random();
+        int currentAnswer = 0;
+
+        private void GenerateTask()
+        {
+            // Operation wählen
+            string[] operations = { "+", "-", "*" };
+            string op = operations[rnd.Next(operations.Length)];
+
+            int a = rnd.Next(1, 10);
+            int b = rnd.Next(1, 10);
+    
+
+            TaskText.Text = $"{a} {op} {b} = ?";
+            currentAnswer = op switch
+            {
+                "+" => a + b,
+                "-" => a - b,
+                "*" => a * b,
+                _ => 0
+            };
+
+            GenerateSymbols(a, b, op);
+            FeedbackText.Text = "";
+            AnswerBox.Text = "";
+        }
+
+        private void GenerateSymbols(int a, int b, string op)
+        {
+            SymbolPanel.Children.Clear();
+
+            for (int i = 0; i < a; i++)
+            {
+                SymbolPanel.Children.Add(new TextBlock { Text = "🍎", FontSize = 32, Margin = new Thickness(2), Foreground = new SolidColorBrush(Color.FromRgb(192, 57, 43)) });
+            }
+
+            //Operator symbol
+            SymbolPanel.Children.Add(new TextBlock { Text = $" {op} ", FontSize = 32, Margin = new Thickness(5, 0, 5, 0), Foreground = new SolidColorBrush(Color.FromRgb(192, 57, 43)) });
+
+            for (int i = 0; i < b; i++)
+            {
+                SymbolPanel.Children.Add(new TextBlock { Text = "🍎", FontSize = 32, Margin = new Thickness(2), Foreground = new SolidColorBrush(Color.FromRgb(192, 57, 43)) });
+            }
+        }
+        
+        
+
+        private void CheckButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(int.TryParse(AnswerBox.Text, out int userAnswer))
+            {
+                if(userAnswer == currentAnswer)
+                {
+                    FeedbackText.Text = "🎉 Glückwunsch!";
+                    FeedbackText.Foreground = new SolidColorBrush(Color.FromRgb(0, 180, 0));
+                    next = true;
+                    NextButton.IsEnabled = true;
+                }
+                else
+                {
+                    FeedbackText.Text = "❌ Versuch es nochmal!";
+                    FeedbackText.Foreground = new SolidColorBrush(Color.FromRgb(192, 57, 43));
+                }
+            }
+            else
+            {
+                FeedbackText.Text = "Bitte eine Zahl eingeben!";
+                FeedbackText.Foreground = new SolidColorBrush(Color.FromRgb(192, 57, 43));
+                NextButton.IsEnabled= false;
+            }
+        }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(next)
+            {
+                GenerateTask();
+                next = false;
+                NextButton.IsEnabled = false;
+            }
+        }
+
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Kleines 1x1:\n");
+
+            for(int i = 1; i <= 10; i++)
+            {
+                for(int j = 1; j <= 10; j++)
+                {
+                    sb.Append($"{i}×{j}={i * j}\t");
+                }
+                sb.AppendLine();
+            }
+
+            MessageBox.Show(sb.ToString(), "Hilfe: Kleines 1x1", MessageBoxButton.OK);
+        }
+
+
+
+
     }
+
 }
