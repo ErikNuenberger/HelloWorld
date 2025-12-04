@@ -40,7 +40,7 @@
 											Storyboard.TargetName="border"
 											Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
 											To="#E6968E"
-											Duration="0:0:0.10"
+											Duration="0:0:0.08"
 											AutoReverse="True"/>
 									</Storyboard>
 								</BeginStoryboard>
@@ -144,7 +144,7 @@
 											Storyboard.TargetName="border"
 											Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
 											To="#E6968E"
-											Duration="0:0:0.10"
+											Duration="0:0:0.08"
 											AutoReverse="True"/>
 									</Storyboard>
 								</BeginStoryboard>
@@ -180,7 +180,7 @@
 				<TextBlock Background="#1a1a1a" Foreground="#FFFFFF" FontSize="25" Text="Eingabe" FontWeight="Bold" Margin="0,0,0,5"/>
 
 				<!-- Input TextBox -->
-				<TextBox Background="#242426" Padding="5" Foreground="#FFFFFF" BorderBrush="#352f35" Grid.Row="1" Name="InputBox" Height="42" FontSize="26" KeyDown="InputBox_KeyDown"/>
+				<TextBox Background="#242426" Padding="5" Foreground="#FFFFFF" BorderBrush="#242426" Grid.Row="1" Name="InputBox" Height="42" FontSize="26" KeyDown="InputBox_KeyDown"/>
 
 				<!-- Button Grid -->
 				<Grid Grid.Row="2" Margin="0, 10, 0, 0">

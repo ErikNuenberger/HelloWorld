@@ -164,7 +164,7 @@ namespace Taschenrechner_WPF
                         ShowPos++;
                     }
                     string histstr = "";
-                    for (int i = 0; i < ShowPos; i++)
+                    for(int i = 0; i < ShowPos; i++)
                     {
                         histstr = histstr + HistoryCal[i] + " =\n" + HistoryRes[i] + "\n\n";
                     }
@@ -260,21 +260,34 @@ namespace Taschenrechner_WPF
         {
             SymbolPanel.Children.Clear();
 
+            // Pfad zum Bild (relative Pfadangabe innerhalb deines Projekts)
+            string appleImagePath = "Images/Apple.png";
+
             for (int i = 0; i < a; i++)
             {
-                SymbolPanel.Children.Add(new TextBlock { Text = "🍎", FontSize = 32, Margin = new Thickness(2), Foreground = new SolidColorBrush(Color.FromRgb(192, 57, 43)) });
+                Image img = new Image();
+                img.Source = new BitmapImage(new Uri(appleImagePath, UriKind.Relative));
+                img.Width = 32;   // Größe des Symbols
+                img.Height = 32;
+                img.Margin = new Thickness(2);
+                SymbolPanel.Children.Add(img);
             }
 
-            //Operator symbol
+            // Operator symbol als TextBlock
             SymbolPanel.Children.Add(new TextBlock { Text = $" {op} ", FontSize = 32, Margin = new Thickness(5, 0, 5, 0), Foreground = new SolidColorBrush(Color.FromRgb(192, 57, 43)) });
 
             for (int i = 0; i < b; i++)
             {
-                SymbolPanel.Children.Add(new TextBlock { Text = "🍎", FontSize = 32, Margin = new Thickness(2), Foreground = new SolidColorBrush(Color.FromRgb(192, 57, 43)) });
+                Image img = new Image();
+                img.Source = new BitmapImage(new Uri(appleImagePath, UriKind.Relative));
+                img.Width = 32;
+                img.Height = 32;
+                img.Margin = new Thickness(2);
+                SymbolPanel.Children.Add(img);
             }
         }
-        
-        
+
+
 
         private void CheckButton_Click(object sender, RoutedEventArgs e)
         {
