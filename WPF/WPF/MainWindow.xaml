@@ -110,11 +110,33 @@
 				</Trigger>
 			</Style.Triggers>
 		</Style>
+
+		<Style x:Key="settingsbutton" TargetType="Button">
+			<Setter Property="Background" Value="#1a1a1a"/>
+			<Setter Property="BorderBrush" Value="#1a1a1a"/>
+			<Setter Property="Foreground" Value="#1a1a1a"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Border Background="{TemplateBinding Background}"
+								BorderBrush="{TemplateBinding BorderBrush}"
+								BorderThickness="0">
+							<ContentPresenter HorizontalAlignment="Center"
+											  VerticalAlignment="Center"/>
+						</Border>
+
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
 		
 		
 
 		<Style TargetType="ToggleButton">
-			<!-- Standard -->
 			<Setter Property="Background" Value="#C0392B"/>
 			<Setter Property="BorderBrush" Value="#C0392B"/>
 			<Setter Property="Foreground" Value="#FFFFFF"/>
@@ -159,13 +181,14 @@
 
 
 	<Grid Background="#1a1a1a" Margin="40">
+		
+	
 		<Grid x:Name="MainUI">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="5*" />
 				<ColumnDefinition Width="4*" />
 			</Grid.ColumnDefinitions>
 
-			<!-- Left side (Input + Buttons) -->
 			<Grid Grid.Column="0">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto"/>
@@ -176,13 +199,10 @@
 					<RowDefinition Height="Auto"/>
 				</Grid.RowDefinitions>
 
-				<!-- INPUT label -->
 				<TextBlock Background="#1a1a1a" Foreground="#FFFFFF" FontSize="25" Text="Eingabe" FontWeight="Bold" Margin="0,0,0,5"/>
 
-				<!-- Input TextBox -->
 				<TextBox Background="#242426" Padding="5" Foreground="#FFFFFF" BorderBrush="#242426" Grid.Row="1" Name="InputBox" Height="42" FontSize="26" KeyDown="InputBox_KeyDown"/>
 
-				<!-- Button Grid -->
 				<Grid Grid.Row="2" Margin="0, 10, 0, 0">
                 
 					<Grid.RowDefinitions>
@@ -202,7 +222,6 @@
 						<ColumnDefinition/>
 					</Grid.ColumnDefinitions>
 
-					<!-- Row 1 -->
 					<Button Style="{StaticResource NumberButton}" Click="Button_Number_Click" Grid.Row="0" Grid.Column="0" Content="7"/>
 					<Button Style="{StaticResource NumberButton}" Click="Button_Number_Click" Grid.Row="0" Grid.Column="1" Content="8"/>
 					<Button Style="{StaticResource NumberButton}" Click="Button_Number_Click" Grid.Row="0" Grid.Column="2" Content="9"/>
@@ -211,7 +230,6 @@
 					<Button Style="{StaticResource SpecialButton}" Click="Button_Number_Click" Grid.Row="0" Grid.Column="5" Content="sin("/>
 					<Button Style="{StaticResource SpecialButton}" Click="Button_Number_Click" Grid.Row="0" Grid.Column="6" Content="fac("/>
 
-					<!-- Row 2 -->
 					<Button Style="{StaticResource NumberButton}" Click="Button_Number_Click" Grid.Row="1" Grid.Column="0" Content="4"/>
 					<Button Style="{StaticResource NumberButton}" Click="Button_Number_Click" Grid.Row="1" Grid.Column="1" Content="5"/>
 					<Button Style="{StaticResource NumberButton}" Click="Button_Number_Click" Grid.Row="1" Grid.Column="2" Content="6"/>
@@ -220,7 +238,6 @@
 					<Button Style="{StaticResource SpecialButton}" Click="Button_Number_Click" Grid.Row="1" Grid.Column="5" Content="cos("/>
 					<Button Style="{StaticResource SpecialButton}" Click="Button_Number_Click" Grid.Row="1" Grid.Column="6" Content="sqrt("/>
                 
-					<!-- Row 3 -->
 					<Button Style="{StaticResource NumberButton}" Click="Button_Number_Click" Grid.Row="2" Grid.Column="0" Content="1"/>
 					<Button Style="{StaticResource NumberButton}" Click="Button_Number_Click" Grid.Row="2" Grid.Column="1" Content="2"/>
 					<Button Style="{StaticResource NumberButton}" Click="Button_Number_Click" Grid.Row="2" Grid.Column="2" Content="3"/>
@@ -229,7 +246,6 @@
 					<Button Style="{StaticResource SpecialButton}" Click="Button_Number_Click" Grid.Row="2" Grid.Column="5" Content="tan("/>
 					<Button Style="{StaticResource SpecialButton}" Click="Button_Number_Click" Grid.Row="2" Grid.Column="6" Content="pow("/>
 
-					<!-- Row 4 -->
 					<Button Style="{StaticResource NumberButton}" Click="Button_Number_Click" Grid.Row="3" Grid.Column="0" Content="0"/>
 					<Button Style="{StaticResource NumberButton}" Click="Button_Number_Click" Grid.Row="3" Grid.Column="1" Content=","/>
 					<Button Style="{StaticResource NumberButton}" Click="Button_Number_Click" Grid.Row="3" Grid.Column="2" Content=";"/>
@@ -239,14 +255,11 @@
 					<Button Style="{StaticResource SpecialButton}" Click="Button_Number_Click" Grid.Row="3" Grid.Column="6" Content="C"/>
 				
 				</Grid>
-
-				<!-- Toggle row -->
 				<StackPanel Grid.Row="3" Margin="0,10,0,0" Orientation="Horizontal">
 					<ToggleButton x:Name="AngleToggle" Content="RAD" Checked="AngleToggle_Checked" Unchecked="AngleToggle_Unchecked" Width="100" Height="45"></ToggleButton>
 				</StackPanel>
 			</Grid>
 
-			<!-- Right side (Output) -->
 			<StackPanel Grid.Column="1" Margin="10,0,0,0">
 				<TextBlock Foreground="#FFFFFF" FontSize="25" Text="Ergebnis:" FontWeight="Bold" Margin="0,0,0,5"/>
 				<TextBox Name="OutputLabel" BorderBrush="#242426" Height="42" FontSize="26" Background="#242426" Foreground="#FFFFFF" Padding="5"/>
@@ -321,7 +334,55 @@
 			<TextBlock x:Name="FeedbackText" FontSize="24" FontWeight="Bold" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
 		</Grid>
-		<ToggleButton x:Name="KidsModeToggle" Content="Kindermodus" Width="185" Height="45" Margin="0,0,10,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Checked="KidsModeToggle_Checked" Unchecked="KidsModeToggle_Unchecked"/>
+		<Grid HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+
+			<ToggleButton x:Name="KidsModeToggle" Content="Kindermodus" Width="185" Height="45" Margin="0,0,10,0" Grid.Column="0" Checked="KidsModeToggle_Checked" Unchecked="KidsModeToggle_Unchecked"/>
+
+			<Button Style="{StaticResource settingsbutton}" Grid.Column="1" Width="45" Height="45" Padding="5" Click="Settings_Button">
+				<Image Source="Images/gear.png"
+					   Width="45" Height="45"
+					   Stretch="Uniform"/>
+			</Button>
+		</Grid>
+		<Grid x:Name="SettingsUI" Margin="0, 10">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+
+			<TextBlock Text="Einstellungen" FontSize="30" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="0,10"/>
+
+			<StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" Margin="0,20">
+				<TextBlock Text="Schriftart: " Foreground="White" FontSize="20" VerticalAlignment="Center"/>
+				<ComboBox x:Name="FontFamilyComboBox" Width="200" FontSize="20" Margin="10,0">
+					<ComboBoxItem Content="Arial"/>
+					<ComboBoxItem Content="Calibri"/>
+					<ComboBoxItem Content="Comic Sans MS"/>
+					<ComboBoxItem Content="Segoe UI"/>
+					<ComboBoxItem Content="Times New Roman"/>
+				</ComboBox>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="0,20">
+				<TextBlock Text="Schriftgröße: " Foreground="White" FontSize="20" VerticalAlignment="Center"/>
+				<ComboBox x:Name="FontSizeComboBox" Width="100" FontSize="20" Margin="10,0">
+					<ComboBoxItem Content="14"/>
+					<ComboBoxItem Content="16"/>
+					<ComboBoxItem Content="18"/>
+					<ComboBoxItem Content="20"/>
+					<ComboBoxItem Content="24"/>
+					<ComboBoxItem Content="28"/>
+				</ComboBox>
+
+				<Button Content="Anwenden" Width="120" Height="40" Margin="20,0" Click="ApplyFontSettings_Click"/>
+				<Button Content="Zurück" Width="120" Height="40" Margin="20,0" Click="Back"/>
+			</StackPanel>
+		</Grid>
     </Grid>
 
 	

@@ -23,6 +23,7 @@ namespace Taschenrechner_WPF
             MainUI.Visibility = Visibility.Visible;
             KidsUI.Visibility = Visibility.Collapsed;
             HistoryLabel.Visibility = Visibility.Collapsed;
+            SettingsUI.Visibility = Visibility.Collapsed;
             NextButton.IsEnabled = false;
             
         }
@@ -342,7 +343,39 @@ namespace Taschenrechner_WPF
         }
 
 
+        private void Settings_Button(object sender, RoutedEventArgs e)
+        {
+            MainUI.Visibility = Visibility.Collapsed;
+            KidsUI.Visibility = Visibility.Collapsed;
+            SettingsUI.Visibility = Visibility.Visible;
+        }
 
+        private void ApplyFontSettings_Click(object sender, RoutedEventArgs e)
+        {
+            if (FontFamilyComboBox.SelectedItem is ComboBoxItem fontItem)
+            {
+                string fontName = fontItem.Content.ToString();
+                InputBox.FontFamily = new FontFamily(fontName);
+                OutputLabel.FontFamily = new FontFamily(fontName);
+            }
+
+            if (FontSizeComboBox.SelectedItem is ComboBoxItem sizeItem)
+            {
+                if (double.TryParse(sizeItem.Content.ToString(), out double size))
+                {
+                    InputBox.FontSize = size;
+                    OutputLabel.FontSize = size;
+                }
+            }
+        }
+
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            MainUI.Visibility = Visibility.Visible;
+            KidsUI.Visibility = Visibility.Collapsed;
+            SettingsUI.Visibility = Visibility.Collapsed;
+        }
 
     }
 
