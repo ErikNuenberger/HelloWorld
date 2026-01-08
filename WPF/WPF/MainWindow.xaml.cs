@@ -9,6 +9,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using System.Diagnostics;
 
 namespace Taschenrechner_WPF
 {
@@ -54,6 +56,20 @@ namespace Taschenrechner_WPF
                     {
                         OutputLabel.Text = "Fehlerhafte Eingabe";
                         string errorMsg = output.Substring(20);
+
+                        string path = System.IO.Path.Combine(
+                            AppDomain.CurrentDomain.BaseDirectory,
+                            "errorlog.log"
+                        );
+                        try
+                        {
+                            File.AppendAllText(path, "$\t" + errorMsg + "\n");
+                        }
+                        catch(Exception ex)
+                        {
+                            Debug.WriteLine(ex.ToString());
+                        }
+
                         int index = 0;
                         HistoryRes[HistPos] = "Fehler";
                         if (errorMsg.Length > 40)
@@ -131,6 +147,20 @@ namespace Taschenrechner_WPF
                     {
                         OutputLabel.Text = "Fehlerhafte Eingabe";
                         string errorMsg = output.Substring(20);
+
+                        string path2 = System.IO.Path.Combine(
+                            AppDomain.CurrentDomain.BaseDirectory,
+                            "errorlog.log"
+                        );
+                        try
+                        {
+                            File.AppendAllText(path2, "$\t" + errorMsg + "\n");
+                        }
+                        catch(Exception ex)
+                        {
+                            Debug.WriteLine(ex.ToString());
+                        }
+
                         HistoryRes[HistPos] = "Fehler";
                         int index = 0;
                         if (errorMsg.Length > 40)
