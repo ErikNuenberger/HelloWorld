@@ -11,6 +11,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using System.Diagnostics;
+using System.Linq;
 
 namespace Taschenrechner_WPF
 {
@@ -27,8 +28,13 @@ namespace Taschenrechner_WPF
             HistoryLabel.Visibility = Visibility.Collapsed;
             SettingsUI.Visibility = Visibility.Collapsed;
             NextButton.IsEnabled = false;
-            
+            ErrorHandlerMethod();
+
+
         }
+
+        
+
         bool rad = true;
         bool kidsmode = false;
         string[] HistoryRes = new string[4];
@@ -36,6 +42,7 @@ namespace Taschenrechner_WPF
         int HistPos = 0;
         int ShowPos = 0;
         bool next = false;
+        int errorCounter = 0;
 
         private void Button_Number_Click(object sender, RoutedEventArgs e)
         {
@@ -63,7 +70,8 @@ namespace Taschenrechner_WPF
                         );
                         try
                         {
-                            File.AppendAllText(path, "$\t" + errorMsg + "\n");
+                            File.AppendAllText(path, "$" + errorCounter.ToString() + "\t\t"  + errorMsg + "\n");
+                            errorCounter++;
                         }
                         catch(Exception ex)
                         {
@@ -143,7 +151,7 @@ namespace Taschenrechner_WPF
                     }
                     HistoryCal[HistPos] = val;
                     string output = Program.Calculate(val, rad);
-                    if (output.Contains("Fehlerhafte Eingabe"))
+                    if(output.Contains("Fehlerhafte Eingabe"))
                     {
                         OutputLabel.Text = "Fehlerhafte Eingabe";
                         string errorMsg = output.Substring(20);
@@ -154,7 +162,8 @@ namespace Taschenrechner_WPF
                         );
                         try
                         {
-                            File.AppendAllText(path2, "$\t" + errorMsg + "\n");
+                            File.AppendAllText(path2, "$" + errorCounter.ToString() + "\t" + errorMsg + "\n");
+                            errorCounter++;
                         }
                         catch(Exception ex)
                         {
@@ -163,18 +172,18 @@ namespace Taschenrechner_WPF
 
                         HistoryRes[HistPos] = "Fehler";
                         int index = 0;
-                        if (errorMsg.Length > 40)
+                        if(errorMsg.Length > 40)
                         {
-                            for (int i = errorMsg.Length - 1; i > 40; i--)
+                            for(int i = errorMsg.Length - 1; i > 40; i--)
                             {
-                                if (errorMsg[i] == ' ')
+                                if(errorMsg[i] == ' ')
                                 {
                                     index = i;
                                     break;
                                 }
                             }
                         }
-                        if (index > 0)
+                        if(index > 0)
                         {
                             errorMsg = errorMsg.Insert(index, "\n");
                         }
@@ -407,6 +416,50 @@ namespace Taschenrechner_WPF
             SettingsUI.Visibility = Visibility.Collapsed;
         }
 
+        public void ErrorHandlerMethod()
+        {
+            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "errorlog.log");
+
+            errorCounter = 0;
+
+            try
+            {
+                string lastLine = File.ReadLines(path).Reverse().FirstOrDefault(line => !string.IsNullOrWhiteSpace(line));
+
+                if(lastLine == null)
+                {
+                    errorCounter = 0;
+                    return;
+                }
+
+                string str_sub = lastLine.Substring(1);
+                int indexing = 0;
+                while(str_sub[indexing] != '\t')
+                {
+                    indexing++;
+                }
+                Debug.WriteLine(str_sub.Substring(0, indexing));
+                errorCounter = int.Parse(str_sub.Substring(0, indexing));
+                errorCounter++;
+            }
+
+            catch(Exception ex)
+            {
+                Debug.WriteLine("Fehler beim Initialisieren des ErrorCounters:");
+                Debug.WriteLine(ex.ToString());
+                errorCounter = 0;
+            }
+
+            //delete log when over 100 messages
+            if(errorCounter > 100)
+            {
+                File.WriteAllText(path, string.Empty);
+                errorCounter = 0;
+            }
+        }
+
+
     }
+    
 
 }
